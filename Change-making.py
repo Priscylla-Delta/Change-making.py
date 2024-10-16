@@ -52,9 +52,28 @@ if len(sys.argv) == 2:
             # print(coins)
     
         else: 
-            coins = []
+            coins = [.01]
             print("Manual still needs to be setup")
-            sys.exit()
+            
+            done = False
+            while done == False:
+                print("Input the value of a coin you would like to use? or Type 'Done' to continue")
+                coin = input()
+                if str(coin.lower()) == "done":
+                    done = True
+                    break
+                try:
+                    coin = round(float(coin), ndigits=2)
+                    if coin > 0:
+                        coins.append(coin)
+                    else:
+                        print("Posative numbers only")
+
+                except ValueError:
+                    print("Only Numbers")
+        
+            coins.sort(reverse=True)
+
 
 
 else: 
